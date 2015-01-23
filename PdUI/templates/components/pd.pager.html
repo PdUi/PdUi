@@ -1,0 +1,50 @@
+﻿<ul class="pager">
+    <li data-ng-if="pagerVm.enableFirstLastPageArrows">
+        <a data-ng-click="pagerVm.pageToFirst()" data-ng-disabled="!pagerVm.canPageBackward">
+            <i class="glyphicon glyphicon-step-backward"></i>
+        </a>
+    </li>
+    <li data-ng-if="pagerVm.enablePageArrows">
+        <a data-ng-click="pagerVm.pageBackward()" data-ng-disabled="!pagerVm.canPageBackward">
+            <i class="glyphicon glyphicon-backward"></i>
+        </a>
+    </li>
+    <li data-ng-if="pagerVm.totalPages > 1">
+        <a data-ng-click="pagerVm.pageTo(1)" data-ng-disabled="!pagerVm.canPageBackward" data-ng-class="{ active: 'pagerVm.settings.currentPage === 1'}">
+            1
+        </a>
+    </li>
+    <li data-ng-if="pagerVm.hasMorePagesBackward">
+        <a data-ng-disabled="true">
+            ...
+        </a>
+    </li>
+    <li data-ng-repeat="i in pagerVm.range">
+        <a data-ng-click="pagerVm.pageTo(i)" data-ng-disabled="i === pagerVm.settings.currentPage" data-ng-class="{ active: 'i === pagerVm.settings.currentPage'}">
+            {{i}}
+        </a>
+    </li>
+    <li data-ng-if="pagerVm.hasMorePagesForward">
+        <a data-ng-disabled="true">
+            ...
+        </a>
+    </li>
+    <li data-ng-if="pagerVm.totalPages > 1">
+        <a data-ng-click="pagerVm.pageTo(pagerVm.totalPages)" data-ng-disabled="!pagerVm.canPageForward" data-ng-class="{ active: 'pagerVm.settings.currentPage === pagerVm.totalPages'}">
+            {{pagerVm.totalPages}}
+        </a>
+    </li>
+    <li data-ng-if="pagerVm.enablePageArrows">
+        <a data-ng-click="pagerVm.pageForward()" data-ng-disabled="!pagerVm.canPageForward">
+            <i class="glyphicon glyphicon-forward"></i>
+        </a>
+    </li>
+    <li data-ng-if="pagerVm.enableFirstLastPageArrows">
+        <a data-ng-click="pagerVm.pageToLast()" data-ng-disabled="!pagerVm.canPageForward">
+            <i class="glyphicon glyphicon-step-forward"></i>
+        </a>
+    </li>
+    <li data-ng-show="pagerVm.enablePageInput">
+        <input data-ng-model="pagerVm.pageInput" data-ng-blur="pagerVm.updateCurrentPage()" data-ng-class="{ 'invalid' : !pagerVm.isValidPageInput }" />
+    </li>
+</ul>

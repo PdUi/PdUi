@@ -1,0 +1,84 @@
+﻿<div class="grid-example" data-ng-controller="GridController as gvm">
+    <h1>Grid</h1>
+    <!--<h6>Example syntax</h6>
+    <pre class="code-left"><code><span>-->
+<!--&lt;grid data="{}" actions="[]" settings="{}"&gt;&lt;/grid&gt;-->
+<!--data = { -->
+         <!--columnDefinitions: [ -->
+           <!--{ -->
+             <!--id: &lt;property1&gt;, -->
+             <!--title: &lt;property1Description&gt; -->
+           <!--}, -->
+           <!--... -->
+         <!--],-->
+         <!--rows: [ -->
+           <!--{ -->
+             <!--&lt;property1&gt;: &lt;value1&gt;, -->
+             <!--&lt;property2&gt;: &lt;value2&gt;, -->
+             <!--... -->
+           <!--}, -->
+           <!--... -->
+         <!--]-->
+       <!--}-->
+<!--actions = [ -->
+            <!--{ -->
+              <!--name: &lt;'sort'|stringValue&gt;, -->
+              <!--action: &lt;functionValue&gt; -->
+            <!--}, -->
+            <!--... -->
+<!--]-->
+<!--settings = { -->
+             <!--enableInlineEditing: &lt;booleanValue&gt; -->
+<!--}-->
+<!--</span></code></pre>-->
+    <!--<h6>Objects on page</h6>-->
+    <!--<pre><code><span>-->
+<!--data = { -->
+         <!--columnDefinitions: [ -->
+    <!--<span data-ng-repeat="def in gvm.gridData.columnDefinitions">{ -->
+             <!--id: {{def.id}}, -->
+             <!--title: {{def.title}} -->
+           <!--}<span data-ng-if="def != gvm.gridData.columnDefinitions[gvm.gridData.columnDefinitions.length - 1]">,</span></span>-->
+        <!--],-->
+        <!--rows: [ &lt;!&ndash;<span data-ng-repeat="prop in gvm.gridRows[0]">{ {{prop}}: {{prop.key}} }</span>&ndash;&gt;-->
+    <!--<span>{ -->
+             <!--id: {{gvm.gridData.rows[0].id}}, -->
+             <!--firstName: {{gvm.gridData.rows[0].firstName}}, -->
+             <!--lastName: {{gvm.gridData.rows[0].lastName}} -->
+           <!--},-->
+           <!--...</span>-->
+        <!--]-->
+     <!--}-->
+<!--actions = [ -->
+    <!--<span data-ng-repeat="action in gvm.gridActions">{ -->
+              <!--name: {{action.name}}, -->
+              <!--action: -->
+                <!--{{action.action.toString()}} -->
+            <!--}<span data-ng-if="def != gvm.gridData.columnDefinitions[gvm.gridData.columnDefinitions.length - 1]">,</span></span>-->
+         <!--]-->
+ <!--settings = { -->
+              <!--enableInlineEditing: {{gvm.gridSettings.enableInlineEditing}} -->
+            <!--}-->
+<!--</span></code></pre>-->
+
+    <div class="grid-setting-input">
+        <label for="numberOfRecords">Number of records to display: </label><input name="numberOfRecords" data-ng-model="gvm.numberOfRecords" />
+
+        <input type="checkbox" name="enableInlineEditing" data-ng-model="gvm.gridSettings.enableInlineEditing" /><label for="enableInlineEditing">Enable inline editing</label>
+    </div>
+
+    <!--<form name="createFunctionForm" class="grid-setting-input">
+        <label for="newFunctionInput">New function name: </label><input name="newFunctionInput" data-ng-model="gvm.userEnteredFunctionName" />
+        <label for="newFunctionInput">New function: </label><input name="newFunctionInput" data-ng-model="gvm.userEnteredFunction" />
+        <button data-ng-click="gvm.createGridFunction()">Create and add function</button>
+    </form>-->
+
+    <div class="grid-setting-input">
+        <input type="checkbox" name="includeViewAction" data-ng-click="gvm.addAction('view')" /><label for="includeViewAction">Add view action</label>
+        <input type="checkbox" name="includeEditAction" data-ng-click="gvm.addAction('edit')" /><label for="includeEditAction">Add edit action</label>
+        <input type="checkbox" name="includeDeleteAction" data-ng-click="gvm.addAction('delete')" /><label for="includeDeleteAction">Add delete action</label>
+        <input type="checkbox" name="includeSortAction" data-ng-click="gvm.addAction('sort')" /><label for="includeSortAction">Enable sort action</label>
+    </div>
+
+    <pd-grid data="gvm.gridData" actions="gvm.gridActions" settings="gvm.gridSettings"></pd-grid>
+</div>

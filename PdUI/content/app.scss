@@ -1,0 +1,29 @@
+﻿@import '_halflings.scss';
+
+@import 'components/_component-variables.scss';
+@import 'components/_pager.scss';
+@import 'components/_grid.scss';
+
+.pager-example {
+    border-bottom: 1px dashed;
+
+    > pager {
+        > .pager {
+            padding-top: 150px;
+        }
+    }
+}
+
+.grid-example {
+    border-bottom: 1px dashed;
+}
+
+.code-left {
+    width: 50%;
+    float: left;
+}
+
+pre {
+    margin-top: -35px;
+    font-size: 10px;
+}

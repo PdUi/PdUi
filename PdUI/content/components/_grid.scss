@@ -1,0 +1,95 @@
+﻿.grid {
+    width: 100%; 
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed; // this will make all columns same width. could set explicit widths on each cell
+                         // quick test indicates that if i change the width of the header cell, it should effect the whole column, so could target the last one(actions for a smaller width)
+    #grid-actions-column{
+        width: 50px;
+    }
+
+    tr {
+        th, td {
+          border-right: $grid-border;
+          border-bottom: $grid-border;
+          padding: 4px;
+
+          &:first-child {
+              border-left: $grid-border;
+            }
+        }
+
+        th {
+          border-top: $grid-border;
+          text-align: left;
+        }
+
+        &:first-child {
+            th {
+                &:first-child {
+                    border-top-left-radius: $grid-border-radius;
+                }
+                &:last-child {
+                  border-top-right-radius: $grid-border-radius;
+                }
+            }
+        }
+        
+        &:last-child {
+            td {
+                &:first-child {
+                    border-bottom-left-radius: $grid-border-radius;
+                }
+                &:last-child {
+                    border-bottom-right-radius: $grid-border-radius;
+                }
+            }
+        }
+    }
+
+    > thead {
+        > tr {
+            > th {
+                text-align: left;
+
+                > div {
+
+                    &:first-child {
+                        margin-top: 3px;
+                    }
+
+                    &:last-child {
+                        margin-bottom: 3px;
+                    }
+
+                    > div {
+                        font-size: 10px;
+                        text-align: center;
+                        margin: -5px;
+                    }
+                }
+            } 
+        }
+    }
+
+    > tbody {
+        > tr {
+            &:nth-child(odd) {
+                background-color: $grid-odd-row-background-color;
+            }
+
+            &:nth-child(even) {
+                background-color: $grid-even-row-background-color;
+            }
+
+            > td {
+                text-align: left;
+                height: 21px;
+            }
+        }
+    }
+    
+    > .selected {
+        background-color: black;
+    }
+}

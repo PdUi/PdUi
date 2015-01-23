@@ -1,0 +1,23 @@
+﻿<div class="pager-example" data-ng-controller="PagerController as pvm">
+    <h1>Toggle Pager Options</h1>
+    <div class="pager-setting-input checkbox">
+        <input name="enablePageInput" type="checkbox" data-ng-model="pvm.pagerSettings.enablePageInput" /><label for="enablePageInput">Enable Page Input</label>
+    </div>
+    <div class="pager-setting-input checkbox">
+        <input name="enablePageArrows" type="checkbox" data-ng-model="pvm.pagerSettings.enablePageArrows" /><label for="enablePageArrows">Enable Page Arrows</label>
+    </div>
+    <div class="pager-setting-input checkbox">
+        <input name="enableFirstLastPageArrows" type="checkbox" data-ng-model="pvm.pagerSettings.enableFirstLastPageArrows" /><label for="enableFirstLastPageArrows">Enable Page First/Last Arrows</label>
+    </div>
+    <div class="pager-setting-input">
+        <label for="numberOfRecords">Total Number of Records to be paged: </label><input name="numberOfRecords" data-ng-model="pvm.pagerSettings.totalNumberOfRecords" />
+    </div>
+    <div class="pager-setting-input">
+        <label for="pageSizeSelector">Page Size: </label><select name="pageSizeSelector" data-ng-model="pvm.pagerSettings.pageSize" data-ng-options="pageSize for pageSize in pvm.pageSizes"></select>
+    </div>
+    <div class="pager-setting-input">
+        <label for="numPagerButtonsSelector">Max Number of Pager Buttons: </label><select name="numPagerButtonsSelector" data-ng-model="pvm.pagerSettings.maxExplicitPages" data-ng-options="numberButton for numberButton in pvm.maxNumberPagerButtonsOptions"></select>
+    </div>
+
+    <pd-pager settings="pvm.pagerSettings"></pd-pager>
+</div>

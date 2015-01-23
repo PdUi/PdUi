@@ -1,0 +1,46 @@
+﻿<table class="table-striped grid">
+    <thead>
+        <tr>
+            <th data-ng-class="{selected: columnDefintion.id === gridVm.selectedColumnDefinitionId}"
+                data-ng-repeat="columnDefinition in gridVm.columnDefinitions track by $index"
+                data-ng-click="gridVm.sort(columnDefinition)">
+                <div>
+                    <div data-ng-visible="gridVm.sortedColumn === columnDefinition.id && gridVm.sortDirection === 'ascending'">
+                        <i class="glyphicon glyphicon-chevron-up"></i>
+                    </div>
+                    {{columnDefinition.title}}
+                    <div data-ng-visible="gridVm.sortedColumn === columnDefinition.id && gridVm.sortDirection === 'descending'">
+                        <i class="glyphicon glyphicon-chevron-down"></i>
+                    </div>
+                </div>
+            </th>
+            <th data-ng-if="gridVm.gridActions.length" id="grid-actions-column"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-class="{selected: row.id == gridVm.selectedRowId}"
+            data-ng-repeat="row in gridVm.rows"
+            ng-init="rowId = $index">
+            <td data-ng-repeat="columnDefinition in gridVm.columnDefinitions track by $index"
+                data-ng-click="gridVm.onclick($event, columnDefinition, row)"
+                data-ng-mouseenter="gridVm.hoveredColumnDefinition = columnDefinition;"
+                data-ng-mouseleave="gridVm.hoveredColumnDefinition = {};">
+                <input data-ng-if="gridVm.settings.enableInlineEditing"
+                       data-ng-show="gridVm.selectedColumnDefinitionId == columnDefinition.id && row.id == gridVm.selectedRowId"
+                       data-ng-model="row[columnDefinition.id]"
+                       data-ng-blur="gridVm.onblur()"
+                       type="text" />
+                <span data-ng-hide="gridVm.selectedColumnDefinitionId == columnDefinition.id && row.id == gridVm.selectedRowId">
+                    {{row[columnDefinition.id]}}
+                </span>
+            </td>
+
+            <td data-ng-if="gridVm.gridActions.length">
+                <span data-ng-repeat="action in gridVm.gridActions track by $index"
+                      data-ng-click="action.action(row)">
+                    {{action.name}}
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" data-ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <title>Shared UI Components for Angularjs</title>
+    <link rel="stylesheet" href="content/app.css">
+</head>
+    <body>
+        <div ng-include src="'app/pagerExample.html'"></div>
+        <div ng-include src="'app/gridExample.html'"></div>
+        <div ng-include src="'app/pagedGridExample.html'"></div>
+
+        <script src="bower_components/underscore/underscore.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="app.js"></script>
+        
+        <script src="app/individualFactory.js"></script>
+        <script src="scripts/directives/ngVisible.js"></script>
+
+        <script src="scripts/components/pd.pager.js"></script>
+        <script src="app/pagerExample.js"></script>
+        
+        <script src="scripts/components/pd.grid.js"></script>
+        <script src="app/gridExample.js"></script>
+        
+        <script src="scripts/components/pd.pagedGrid.js"></script>
+        <script src="app/pagedGridExample.js"></script>
+    </body>
+</html>

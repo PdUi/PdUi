@@ -1,0 +1,17 @@
+﻿<div data-ng-controller="PagedGridController as pgvm">
+    <h1>Paged Grid</h1>
+    <div class="grid-setting-input">
+        <label for="numberOfRecords">Number of records to display: </label><input name="numberOfRecords" data-ng-model="gvm.numberOfRecords" />
+
+        <input type="checkbox" name="enableInlineEditing" data-ng-model="pgvm.settings.grid.enableInlineEditing" /><label for="enableInlineEditing">Enable inline editing</label>
+    </div>
+
+    <div class="grid-setting-input">
+        <input type="checkbox" name="includeViewAction" data-ng-click="pgvm.addAction('view')" /><label for="includeViewAction">Add view action</label>
+        <input type="checkbox" name="includeEditAction" data-ng-click="pgvm.addAction('edit')" /><label for="includeEditAction">Add edit action</label>
+        <input type="checkbox" name="includeDeleteAction" data-ng-click="pgvm.addAction('delete')" /><label for="includeDeleteAction">Add delete action</label>
+        <input type="checkbox" name="includeSortAction" data-ng-click="pgvm.addAction('sort')" /><label for="includeSortAction">Enable sort action</label>
+    </div>
+
+    <pd-paged-grid data="pgvm.data" page-action="pgvm.pageAction" settings="pgvm.settings" grid-actions="pgvm.gridActions"></pd-paged-grid>
+</div>

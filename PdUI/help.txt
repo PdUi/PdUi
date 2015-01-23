@@ -1,0 +1,4 @@
+// restore bower packages
+bower install
+// update node packages -- have to install all of them in the -g scope, might work for build processes
+npm update -g
